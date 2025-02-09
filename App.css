@@ -1,0 +1,220 @@
+:root {
+  --blue: #0033ff;
+  --orange: #CF9862;
+  --purple: #bf77f5;
+  --green: #71eeb4;
+  --orange2: #fdd6ab;
+  --red: #ff6b6b;
+  --yellow: #fecb01;
+  --pink: #ffb6c1;
+  --teal: #00bfa5;
+}
+
+body {
+  background-color: var(--purple);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-family: 'Futura', sans-serif;
+  overflow: hidden;
+  position: relative;
+  transition: background 1s ease-in-out; /* Smooth transition effect */
+}
+
+/* ✅ Default Rainbow Gradient */
+.app-container.default .bg-gradient {
+  background: linear-gradient(135deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ff91, #00c7ff, #5e00ff);
+}
+
+/* ✅ Mood-based Backgrounds */
+.app-container.Sad .bg-gradient {
+  background: linear-gradient(135deg, var(--blue), #336ca4, #021b31);
+}
+
+.app-container.Sleep .bg-gradient {
+  background: linear-gradient(135deg,var(--blue), #001f3f, #3d5875);
+}
+
+.app-container.Happy .bg-gradient {
+  background: linear-gradient(135deg,var(--yellow), #f6e58d, #f3dc2c);
+}
+
+.app-container.Chill .bg-gradient {
+  background: linear-gradient(135deg, var(--teal), #7adce7, #07484e);
+}
+
+.app-container.Romantic .bg-gradient {
+  background: linear-gradient(135deg, var(--pink), #ff85a2, #961d37);
+}
+
+.app-container.Roadtrip .bg-gradient {
+  background: linear-gradient(135deg, var(--green), #85ffa2, #086920);
+}
+
+.app-container.Workout .bg-gradient {
+  background: linear-gradient(135deg,var(--red), #f7adb6, #ea384d);
+}
+
+.app-container.Focus .bg-gradient {
+  background: linear-gradient(135deg,var(--orange), #ef9516, #fdd290);
+}
+
+.app-container.Party .bg-gradient {
+  background: linear-gradient(135deg, #ff00cc, #333399);
+}
+
+/* ✅ Ensure Gradient Covers Entire Background */
+.bg-gradient {
+  position: absolute;
+  inset: 0;
+  filter: brightness(120%);
+  z-index: 0;
+  transition: background 1s ease-in-out; /* Smooth transition */
+}
+
+/* ✅ Noise Overlay for a Modern Look */
+.bg-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%'><filter id='noise'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23noise)' opacity='0.2'/></svg>");
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+/* ✅ Chatbot Wrapper */
+.chatbot-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ✅ Title Styling */
+.title-container {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: black;
+}
+
+/* ✅ Input and Button */
+.input-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--orange2);
+}
+
+/* ✅ Refresh Button Styling */
+.refresh-button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: var(--teal);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.refresh-button:hover {
+  background-color: var(--blue);
+}
+
+/* ✅ Song List */
+.song-list {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* ✅ Horizontal scrolling for songs */
+.songs {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto; /* Enables horizontal scrolling */
+  gap: 15px;
+  margin-top: 15px;
+  padding-bottom: 10px;
+  white-space: nowrap;
+}
+
+/* ✅ Fix song container to be uniform */
+.song {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 180px; /* Ensures uniform card size */
+  max-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ✅ Make album covers the same size */
+.song img {
+  width: 150px; /* Set a fixed width */
+  height: 150px; /* Set a fixed height */
+  object-fit: cover; /* Crop and maintain aspect ratio */
+  border-radius: 8px;
+}
+
+/* ✅ Ensure text inside the song card is uniform and fits in two lines */
+.song p {
+  font-size: 14px;
+  margin: 5px 0;
+  text-align: center;
+  max-width: 150px; /* Prevents text from overflowing */
+  white-space: normal; /* Allows text to wrap */
+  overflow-wrap: break-word; /* Breaks words if too long */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limits to two lines */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis; /* Adds "..." if text is too long */
+}
+
+/* ✅ Fix button alignment */
+.song a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--blue);
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.song a:hover {
+  color: var(--orange);
+}
